@@ -73,29 +73,29 @@ export const getWeatherColor = (condition: string): string => {
 /**
  * Get weather gradient colors based on condition
  */
-export const getWeatherGradient = (condition: string): string[] => {
+export const getWeatherGradient = (condition: string): readonly [string, string, ...string[]] => {
   const conditionLower = condition.toLowerCase();
   
   if (conditionLower.includes('clear')) {
-    return ['#4A90E2', '#87CEEB', '#FFD700'];
+    return ['#4A90E2', '#87CEEB', '#FFD700'] as const;
   }
   if (conditionLower.includes('cloud')) {
-    return ['#606c88', '#3f4c6b', '#8e9eab'];
+    return ['#606c88', '#3f4c6b', '#8e9eab'] as const;
   }
   if (conditionLower.includes('rain')) {
-    return ['#2c3e50', '#3498db', '#34495e'];
+    return ['#2c3e50', '#3498db', '#34495e'] as const;
   }
   if (conditionLower.includes('thunder')) {
-    return ['#141E30', '#243B55', '#2c3e50'];
+    return ['#141E30', '#243B55', '#2c3e50'] as const;
   }
   if (conditionLower.includes('snow')) {
-    return ['#E6DADA', '#F0F8FF', '#B0C4DE'];
+    return ['#E6DADA', '#F0F8FF', '#B0C4DE'] as const;
   }
   if (conditionLower.includes('mist') || conditionLower.includes('fog')) {
-    return ['#757F9A', '#D7DDE8', '#B0C4DE'];
+    return ['#757F9A', '#D7DDE8', '#B0C4DE'] as const;
   }
   
-  return ['#56CCF2', '#2F80ED', '#4A90E2']; // Default gradient
+  return ['#56CCF2', '#2F80ED', '#4A90E2'] as const; // Default gradient
 };
 
 /**

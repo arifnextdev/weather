@@ -18,7 +18,7 @@ export const WeatherDetail: React.FC<WeatherDetailProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
-        <Icon size={24} color={iconColor} strokeWidth={2} />
+        <Icon size={20} color="#FFFFFF" strokeWidth={1.5} />
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.label}>{label}</Text>
@@ -32,37 +32,39 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    borderRadius: 16,
-    padding: 16,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 0,
+    padding: 20,
     marginVertical: 6,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 6,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#000000',
   },
   iconContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 12,
-    backgroundColor: '#F0F8FF',
+    width: 40,
+    height: 40,
+    borderRadius: 0,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 16,
+    backgroundColor: '#000000',
   },
   textContainer: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   label: {
-    fontSize: 14,
-    color: '#999',
-    marginBottom: 4,
-    fontWeight: '500',
+    fontSize: 12,
+    color: '#666666',
+    fontWeight: '400',
+    textTransform: 'uppercase',
+    letterSpacing: 1.5,
   },
   value: {
     fontSize: 18,
-    color: '#1A1A1A',
-    fontWeight: '600',
+    color: '#000000',
+    fontWeight: '300',
+    letterSpacing: 0,
   },
 });

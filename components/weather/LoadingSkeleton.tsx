@@ -6,25 +6,28 @@ export const LoadingSkeleton: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Skeleton width={200} height={32} style={styles.locationSkeleton} />
-        <Skeleton width={150} height={20} style={styles.conditionSkeleton} />
+        <Skeleton width={40} height={40} borderRadius={20} style={styles.iconSkeleton} />
+        <Skeleton width={180} height={24} borderRadius={12} style={styles.locationSkeleton} />
       </View>
 
       <View style={styles.mainCard}>
-        <Skeleton width={120} height={120} borderRadius={60} style={styles.iconSkeleton} />
-        <Skeleton width={150} height={80} style={styles.tempSkeleton} />
+        <Skeleton width={140} height={140} borderRadius={70} style={styles.weatherIconSkeleton} />
+        <Skeleton width={200} height={100} borderRadius={20} style={styles.tempSkeleton} />
+        <View style={styles.quickStats}>
+          <Skeleton width={100} height={70} borderRadius={16} style={styles.statSkeleton} />
+          <Skeleton width={100} height={70} borderRadius={16} style={styles.statSkeleton} />
+          <Skeleton width={100} height={70} borderRadius={16} style={styles.statSkeleton} />
+        </View>
       </View>
 
-      <View style={styles.details}>
-        <Skeleton width={100} height={60} style={styles.detailSkeleton} />
-        <Skeleton width={100} height={60} style={styles.detailSkeleton} />
-        <Skeleton width={100} height={60} style={styles.detailSkeleton} />
-      </View>
-
-      <View style={styles.forecast}>
-        <Skeleton width={120} height={180} style={styles.forecastCard} />
-        <Skeleton width={120} height={180} style={styles.forecastCard} />
-        <Skeleton width={120} height={180} style={styles.forecastCard} />
+      <View style={styles.detailsSection}>
+        <Skeleton width={160} height={28} borderRadius={14} style={styles.sectionTitle} />
+        <View style={styles.detailsList}>
+          <Skeleton width="100%" height={80} borderRadius={20} style={styles.detailCard} />
+          <Skeleton width="100%" height={80} borderRadius={20} style={styles.detailCard} />
+          <Skeleton width="100%" height={80} borderRadius={20} style={styles.detailCard} />
+          <Skeleton width="100%" height={80} borderRadius={20} style={styles.detailCard} />
+        </View>
       </View>
     </View>
   );
@@ -33,42 +36,55 @@ export const LoadingSkeleton: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    paddingTop: 60,
+    paddingHorizontal: 16,
   },
   header: {
+    flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 20,
+    justifyContent: 'center',
+    marginBottom: 24,
+    gap: 12,
+  },
+  iconSkeleton: {
+    marginRight: 8,
   },
   locationSkeleton: {
-    marginBottom: 12,
-  },
-  conditionSkeleton: {
-    marginBottom: 8,
+    marginLeft: 8,
   },
   mainCard: {
     alignItems: 'center',
-    marginVertical: 24,
+    marginVertical: 16,
+    paddingHorizontal: 16,
   },
-  iconSkeleton: {
-    marginBottom: 16,
+  weatherIconSkeleton: {
+    marginBottom: 24,
   },
   tempSkeleton: {
-    marginBottom: 16,
+    marginBottom: 28,
   },
-  details: {
+  quickStats: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginVertical: 24,
+    justifyContent: 'space-between',
+    width: '100%',
+    gap: 12,
+    marginTop: 8,
   },
-  detailSkeleton: {
-    marginHorizontal: 8,
+  statSkeleton: {
+    flex: 1,
   },
-  forecast: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  detailsSection: {
     marginTop: 24,
+    paddingHorizontal: 4,
   },
-  forecastCard: {
-    marginHorizontal: 4,
+  sectionTitle: {
+    marginBottom: 20,
+    marginLeft: 4,
+  },
+  detailsList: {
+    gap: 12,
+  },
+  detailCard: {
+    marginVertical: 0,
   },
 });

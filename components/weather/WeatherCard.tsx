@@ -32,27 +32,28 @@ export const WeatherCard: React.FC<WeatherCardProps> = ({
         <Text style={styles.condition}>{capitalizeWords(condition)}</Text>
       </View>
 
+      <View style={styles.divider} />
+
       <View style={styles.mainContent}>
-        <Image
-          source={{ uri: weatherApi.getWeatherIconUrl(icon) }}
-          style={styles.weatherIcon}
-          resizeMode="contain"
-        />
         <Text style={styles.temperature}>{formatTemperature(temperature)}</Text>
       </View>
 
+      <View style={styles.divider} />
+
       <View style={styles.details}>
         <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Feels Like</Text>
+          <Text style={styles.detailLabel}>FEELS LIKE</Text>
           <Text style={styles.detailValue}>{formatTemperature(feelsLike)}</Text>
         </View>
+        <View style={styles.detailDivider} />
         <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Humidity</Text>
+          <Text style={styles.detailLabel}>HUMIDITY</Text>
           <Text style={styles.detailValue}>{humidity}%</Text>
         </View>
+        <View style={styles.detailDivider} />
         <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Wind</Text>
-          <Text style={styles.detailValue}>{windSpeed.toFixed(1)} m/s</Text>
+          <Text style={styles.detailLabel}>WIND</Text>
+          <Text style={styles.detailValue}>{windSpeed.toFixed(1)}</Text>
         </View>
       </View>
     </View>
@@ -61,66 +62,75 @@ export const WeatherCard: React.FC<WeatherCardProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    borderRadius: 24,
-    padding: 24,
-    marginHorizontal: 16,
-    marginVertical: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 5,
+    marginHorizontal: 20,
+    marginVertical: 16,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 0,
+    padding: 32,
+    borderWidth: 1,
+    borderColor: '#000000',
   },
   header: {
-    alignItems: 'center',
-    marginBottom: 16,
+    alignItems: 'flex-start',
+    marginBottom: 24,
   },
   location: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#1A1A1A',
+    fontSize: 24,
+    fontWeight: '300',
+    color: '#000000',
     marginBottom: 4,
+    letterSpacing: 2,
+    textTransform: 'uppercase',
   },
   condition: {
-    fontSize: 18,
-    color: '#666',
-    fontWeight: '500',
+    fontSize: 14,
+    color: '#666666',
+    fontWeight: '400',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#000000',
+    marginVertical: 24,
   },
   mainContent: {
-    alignItems: 'center',
-    marginVertical: 16,
-  },
-  weatherIcon: {
-    width: 120,
-    height: 120,
+    alignItems: 'flex-start',
+    marginVertical: 24,
   },
   temperature: {
-    fontSize: 72,
-    fontWeight: '300',
-    color: '#1A1A1A',
-    marginTop: -8,
+    fontSize: 96,
+    fontWeight: '200',
+    color: '#000000',
+    letterSpacing: -4,
+    lineHeight: 96,
   },
   details: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 16,
-    paddingTop: 16,
-    borderTopWidth: 1,
-    borderTopColor: '#E5E5E5',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 24,
   },
   detailItem: {
+    flex: 1,
     alignItems: 'center',
   },
+  detailDivider: {
+    width: 1,
+    height: 40,
+    backgroundColor: '#E0E0E0',
+  },
   detailLabel: {
-    fontSize: 12,
-    color: '#999',
-    marginBottom: 4,
-    fontWeight: '500',
+    fontSize: 10,
+    color: '#999999',
+    marginBottom: 8,
+    fontWeight: '400',
+    letterSpacing: 1.5,
   },
   detailValue: {
-    fontSize: 16,
-    color: '#1A1A1A',
-    fontWeight: '600',
+    fontSize: 20,
+    color: '#000000',
+    fontWeight: '300',
+    letterSpacing: 0,
   },
 });

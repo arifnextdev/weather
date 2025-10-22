@@ -1,64 +1,50 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withRepeat,
   withTiming,
   interpolate,
+  Easing,
+  withSequence,
 } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 
 interface AnimatedBackgroundProps {
-  colors: string[];
+  colors: readonly [string, string, ...string[]];
   children: React.ReactNode;
 }
 
 const { height } = Dimensions.get('window');
 
+
 export const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
   colors,
   children,
 }) => {
-  const animation = useSharedValue(0);
-
-  useEffect(() => {
-    animation.value = withRepeat(
-      withTiming(1, { duration: 3000 }),
-      -1,
-      true
-    );
-  }, []);
-
-  const animatedStyle = useAnimatedStyle(() => {
-    const translateY = interpolate(
-      animation.value,
-      [0, 1],
-      [0, -20]
-    );
-
-    return {
-      transform: [{ translateY }],
-    };
-  });
-
   return (
-    <LinearGradient
-      colors={colors}
-      style={styles.gradient}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-    >
-      <Animated.View style={[styles.content, animatedStyle]}>
+    <View style={styles.container}>
+      <LinearGradient
+        colors={['#000000', '#1a1a1a', '#0a0a0a']}
+        style={styles.gradient}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+      />
+      <View style={styles.content}>
         {children}
-      </Animated.View>
-    </LinearGradient>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  gradient: {
+  container: {
     flex: 1,
+    backgroundColor: '#000000',
+  },
+  gradient: {
+    ...StyleSheet.absoluteFillObject,
   },
   content: {
     flex: 1,

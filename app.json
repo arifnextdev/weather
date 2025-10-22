@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "weather",
+    "name": "Weather App",
     "slug": "weather",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,10 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to provide accurate weather information for your area."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +22,12 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.arif171042.weather"
     },
     "web": {
       "output": "static",
@@ -43,6 +51,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d961047a-2dc7-4853-b0d4-363dc8108262"
+      }
     }
   }
 }
